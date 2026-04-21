@@ -1,5 +1,5 @@
 student_id,session_id,status
-STU001,CS101_S1,Absent
+STU001,CS101_S1,Present
 STU005,CS101_S1,Absent
 STU009,CS101_S1,Present
 STU013,CS101_S1,Present

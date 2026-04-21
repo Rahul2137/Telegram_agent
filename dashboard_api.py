@@ -17,6 +17,9 @@ from pydantic import BaseModel
 
 from data_manager import DataManager
 from agent import StudentAgent
+from bot import cmd_start, cmd_register, cmd_trigger, cmd_status, handle_message
+from telegram.ext import Application, CommandHandler, MessageHandler, filters
+from contextlib import asynccontextmanager
 
 logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s",
@@ -24,7 +27,34 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Student Outreach Dashboard")
+app_state = {}
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Initialize and start the Telegram Bot
+    ptb_app = Application.builder().token(BOT_TOKEN).build()
+    ptb_app.bot_data["data_manager"] = dm
+    ptb_app.bot_data["agent"] = agent
+
+    ptb_app.add_handler(CommandHandler("start", cmd_start))
+    ptb_app.add_handler(CommandHandler("register", cmd_register))
+    ptb_app.add_handler(CommandHandler("trigger", cmd_trigger))
+    ptb_app.add_handler(CommandHandler("status", cmd_status))
+    ptb_app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+
+    await ptb_app.initialize()
+    await ptb_app.start()
+    await ptb_app.updater.start_polling()
+    
+    app_state["ptb_app"] = ptb_app
+    yield
+    
+    # Shutdown the Telegram Bot
+    await ptb_app.updater.stop()
+    await ptb_app.stop()
+    await ptb_app.shutdown()
+
+app = FastAPI(title="Student Outreach Dashboard", lifespan=lifespan)
 
 dm = DataManager()
 agent = StudentAgent(data_manager=dm)
@@ -243,13 +273,16 @@ def get_interaction_logs():
 
 async def _send_telegram(chat_id: str, text: str):
     """Send a message via the Telegram Bot API."""
-    if not BOT_TOKEN:
-        logger.warning("No TELEGRAM_BOT_TOKEN set. Skipping Telegram send.")
+    ptb_app = app_state.get("ptb_app")
+    if not ptb_app:
+        logger.warning("Bot is not running. Skipping Telegram send.")
         return False
-    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    async with httpx.AsyncClient() as client:
-        resp = await client.post(url, json={"chat_id": int(chat_id), "text": text})
-        return resp.status_code == 200
+    try:
+        await ptb_app.bot.send_message(chat_id=int(chat_id), text=text)
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send telegram message: {e}")
+        return False
 
 
 @app.post("/api/trigger")
