@@ -1,0 +1,494 @@
+{
+    "metadata": {
+        "generated_on": "2026-04-21 03:37:50"
+    },
+    "courses": {
+        "Intro to Data Science": {
+            "sessions": [
+                {
+                    "id": "session_1",
+                    "date": "2026-04-12",
+                    "topic": "Python Basics"
+                },
+                {
+                    "id": "session_2",
+                    "date": "2026-04-20",
+                    "topic": "Pandas & DataFrames"
+                },
+                {
+                    "id": "session_3",
+                    "date": "2026-04-22",
+                    "topic": "Data Cleaning"
+                },
+                {
+                    "id": "session_4",
+                    "date": "2026-04-28",
+                    "topic": "Intro to ML"
+                },
+                {
+                    "id": "session_5",
+                    "date": "2026-05-05",
+                    "topic": "Linear Regression"
+                },
+                {
+                    "id": "session_6",
+                    "date": "2026-05-12",
+                    "topic": "Logistic Regression"
+                },
+                {
+                    "id": "session_7",
+                    "date": "2026-05-19",
+                    "topic": "Model Evaluation"
+                },
+                {
+                    "id": "session_8",
+                    "date": "2026-05-26",
+                    "topic": "Final Project Overview"
+                }
+            ],
+            "tasks": [
+                {
+                    "id": "task_1",
+                    "name": "Homework 1",
+                    "deadline": "2026-04-14"
+                },
+                {
+                    "id": "task_2",
+                    "name": "Homework 2",
+                    "deadline": "2026-04-20"
+                },
+                {
+                    "id": "task_3",
+                    "name": "Midterm Project",
+                    "deadline": "2026-04-28"
+                },
+                {
+                    "id": "task_4",
+                    "name": "Final Project",
+                    "deadline": "2026-05-26"
+                }
+            ]
+        },
+        "Advanced AI": {
+            "sessions": [
+                {
+                    "id": "session_1",
+                    "date": "2026-04-12",
+                    "topic": "Deep Learning Basics"
+                },
+                {
+                    "id": "session_2",
+                    "date": "2026-04-20",
+                    "topic": "Neural Networks"
+                },
+                {
+                    "id": "session_3",
+                    "date": "2026-04-22",
+                    "topic": "CNNs"
+                },
+                {
+                    "id": "session_4",
+                    "date": "2026-04-28",
+                    "topic": "RNNs"
+                },
+                {
+                    "id": "session_5",
+                    "date": "2026-05-05",
+                    "topic": "Transformers"
+                },
+                {
+                    "id": "session_6",
+                    "date": "2026-05-12",
+                    "topic": "GANs"
+                },
+                {
+                    "id": "session_7",
+                    "date": "2026-05-19",
+                    "topic": "Reinforcement Learning"
+                },
+                {
+                    "id": "session_8",
+                    "date": "2026-05-26",
+                    "topic": "Deployment"
+                }
+            ],
+            "tasks": [
+                {
+                    "id": "task_1",
+                    "name": "Assignment 1",
+                    "deadline": "2026-04-14"
+                },
+                {
+                    "id": "task_2",
+                    "name": "Assignment 2",
+                    "deadline": "2026-04-22"
+                },
+                {
+                    "id": "task_3",
+                    "name": "Kaggle Competition",
+                    "deadline": "2026-04-28"
+                }
+            ]
+        },
+        "Web Development": {
+            "sessions": [
+                {
+                    "id": "session_1",
+                    "date": "2026-04-12",
+                    "topic": "HTML & CSS"
+                },
+                {
+                    "id": "session_2",
+                    "date": "2026-04-20",
+                    "topic": "JavaScript Basics"
+                },
+                {
+                    "id": "session_3",
+                    "date": "2026-04-22",
+                    "topic": "React Components"
+                },
+                {
+                    "id": "session_4",
+                    "date": "2026-04-28",
+                    "topic": "React State"
+                },
+                {
+                    "id": "session_5",
+                    "date": "2026-05-05",
+                    "topic": "Node.js Basics"
+                },
+                {
+                    "id": "session_6",
+                    "date": "2026-05-12",
+                    "topic": "Express & APIs"
+                },
+                {
+                    "id": "session_7",
+                    "date": "2026-05-19",
+                    "topic": "Databases"
+                },
+                {
+                    "id": "session_8",
+                    "date": "2026-05-26",
+                    "topic": "Fullstack Integration"
+                }
+            ],
+            "tasks": [
+                {
+                    "id": "task_1",
+                    "name": "Portfolio Site",
+                    "deadline": "2026-04-14"
+                },
+                {
+                    "id": "task_2",
+                    "name": "React App",
+                    "deadline": "2026-04-22"
+                },
+                {
+                    "id": "task_3",
+                    "name": "API Service",
+                    "deadline": "2026-04-28"
+                }
+            ]
+        }
+    },
+    "students": {
+        "student_01": {
+            "name": "Alice",
+            "telegram_handle": "@alice_test",
+            "course": "Advanced AI",
+            "status": "at_risk",
+            "attendance": {
+                "absent_yesterday": true,
+                "history": "Attended 2/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": [
+                    "Assignment 1"
+                ]
+            },
+            "teacher_notes": "Needs extra help.",
+            "registered_chat_id": 1189055510
+        },
+        "student_02": {
+            "name": "Bob",
+            "telegram_handle": "@bob_test",
+            "course": "Intro to Data Science",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": true,
+                "history": "Attended 5/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": [
+                    "Homework 1"
+                ]
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_03": {
+            "name": "Charlie",
+            "telegram_handle": "@charlie_test",
+            "course": "Advanced AI",
+            "status": "at_risk",
+            "attendance": {
+                "absent_yesterday": true,
+                "history": "Attended 2/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": [
+                    "Assignment 1"
+                ]
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_04": {
+            "name": "Diana",
+            "telegram_handle": "@diana_test",
+            "course": "Intro to Data Science",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": false,
+                "history": "Attended 4/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Doing well."
+        },
+        "student_05": {
+            "name": "Eve",
+            "telegram_handle": "@eve_test",
+            "course": "Advanced AI",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": false,
+                "history": "Attended 5/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Doing well."
+        },
+        "student_06": {
+            "name": "Frank",
+            "telegram_handle": "@frank_test",
+            "course": "Web Development",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": false,
+                "history": "Attended 6/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Doing well."
+        },
+        "student_07": {
+            "name": "Grace",
+            "telegram_handle": "@grace_test",
+            "course": "Intro to Data Science",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": true,
+                "history": "Attended 8/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": [
+                    "Homework 2"
+                ]
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_08": {
+            "name": "Heidi",
+            "telegram_handle": "@heidi_test",
+            "course": "Advanced AI",
+            "status": "at_risk",
+            "attendance": {
+                "absent_yesterday": false,
+                "history": "Attended 7/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Doing well."
+        },
+        "student_09": {
+            "name": "Ivan",
+            "telegram_handle": "@ivan_test",
+            "course": "Advanced AI",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": false,
+                "history": "Attended 8/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Doing well."
+        },
+        "student_10": {
+            "name": "Judy",
+            "telegram_handle": "@judy_test",
+            "course": "Intro to Data Science",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": true,
+                "history": "Attended 7/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": [
+                    "Homework 1"
+                ]
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_11": {
+            "name": "Mallory",
+            "telegram_handle": "@mallory_test",
+            "course": "Advanced AI",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": true,
+                "history": "Attended 4/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": [
+                    "Assignment 1"
+                ]
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_12": {
+            "name": "Nina",
+            "telegram_handle": "@nina_test",
+            "course": "Intro to Data Science",
+            "status": "at_risk",
+            "attendance": {
+                "absent_yesterday": false,
+                "history": "Attended 7/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Doing well."
+        },
+        "student_13": {
+            "name": "Oscar",
+            "telegram_handle": "@oscar_test",
+            "course": "Web Development",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": true,
+                "history": "Attended 1/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_14": {
+            "name": "Peggy",
+            "telegram_handle": "@peggy_test",
+            "course": "Web Development",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": false,
+                "history": "Attended 1/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Doing well."
+        },
+        "student_15": {
+            "name": "Romeo",
+            "telegram_handle": "@romeo_test",
+            "course": "Advanced AI",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": true,
+                "history": "Attended 7/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_16": {
+            "name": "Sybil",
+            "telegram_handle": "@sybil_test",
+            "course": "Advanced AI",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": false,
+                "history": "Attended 3/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": [
+                    "Assignment 1"
+                ]
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_17": {
+            "name": "Trent",
+            "telegram_handle": "@trent_test",
+            "course": "Advanced AI",
+            "status": "at_risk",
+            "attendance": {
+                "absent_yesterday": false,
+                "history": "Attended 8/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": [
+                    "Assignment 1"
+                ]
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_18": {
+            "name": "Victor",
+            "telegram_handle": "@victor_test",
+            "course": "Advanced AI",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": true,
+                "history": "Attended 5/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_19": {
+            "name": "Walter",
+            "telegram_handle": "@walter_test",
+            "course": "Intro to Data Science",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": true,
+                "history": "Attended 5/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Needs extra help."
+        },
+        "student_20": {
+            "name": "Zoe",
+            "telegram_handle": "@zoe_test",
+            "course": "Advanced AI",
+            "status": "active",
+            "attendance": {
+                "absent_yesterday": false,
+                "history": "Attended 5/8 classes so far."
+            },
+            "homework": {
+                "missing_tasks": []
+            },
+            "teacher_notes": "Doing well."
+        }
+    }
+}

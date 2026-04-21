@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Outreach Dashboard</title>
+    <meta name="description" content="AI-powered student outreach management dashboard for attendance, homework, and session tracking.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- Ambient background blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1>Student Outreach</h1>
+                    <p class="header-subtitle">AI-Powered Communication Dashboard</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="status-badge online">
+                    <span class="pulse-dot"></span>
+                    Agent Active
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tab-nav" id="tabNav">
+            <button class="tab-btn active" data-tab="attendance" id="tab-attendance">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Attendance
+            </button>
+            <button class="tab-btn" data-tab="homework" id="tab-homework">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Homework
+            </button>
+            <button class="tab-btn" data-tab="trigger" id="tab-trigger">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                Trigger Messages
+            </button>
+            <button class="tab-btn" data-tab="upcoming" id="tab-upcoming">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Upcoming
+            </button>
+        </nav>
+
+        <!-- Tab Content -->
+        <main class="tab-content">
+
+            <section class="tab-panel active" id="panel-attendance">
+                <div class="panel-header">
+                    <h2>Attendance Overview</h2>
+                    <div class="panel-actions">
+                        <select id="attCourseFilter" class="select-input" onchange="onAttCourseChange()">
+                            <option value="">All Courses</option>
+                        </select>
+                        <select id="attDateFilter" class="select-input" onchange="loadAttendanceTab()">
+                            <option value="">All Dates</option>
+                        </select>
+                        <button class="btn btn-secondary" onclick="openMarkAttendanceModal()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Mark Attendance
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats cards -->
+                <div class="stats-row" id="attendanceStats"></div>
+
+                <!-- Attendance table -->
+                <div class="table-card">
+                    <table id="attendanceTable">
+                        <thead>
+                            <tr id="attendanceTableHead">
+                                <th>Student</th>
+                                <th>Course</th>
+                                <th>Sessions Attended</th>
+                                <th>Absent</th>
+                                <th>Attendance %</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="tab-panel" id="panel-homework">
+                <div class="panel-header">
+                    <h2>Homework & Assignments</h2>
+                    <div class="panel-actions">
+                        <select id="hwCourseFilter" class="select-input" onchange="onHwCourseChange()">
+                            <option value="">All Courses</option>
+                        </select>
+                        <select id="hwAssignFilter" class="select-input" onchange="loadHomeworkTab()">
+                            <option value="">All Assignments</option>
+                        </select>
+                        <button class="btn btn-secondary" onclick="openMarkHomeworkModal()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                            Update Status
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stats-row" id="homeworkStats"></div>
+
+                <div class="table-card">
+                    <table id="homeworkTable">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Assignment</th>
+                                <th>Course</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="homeworkBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ═══════════ TRIGGER TAB ═══════════ -->
+            <section class="tab-panel" id="panel-trigger">
+                <div class="panel-header">
+                    <h2>Trigger Outreach Messages</h2>
+                </div>
+
+                <div class="trigger-grid">
+                    <div class="trigger-card" id="triggerAttendance">
+                        <div class="trigger-icon attendance-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                        </div>
+                        <h3>Attendance Follow-up</h3>
+                        <p>Message students who were absent from yesterday's sessions.</p>
+                        <span class="trigger-frequency">Runs daily</span>
+                        <button class="btn btn-primary" onclick="triggerTask('attendance')">Send Now</button>
+                    </div>
+                    <div class="trigger-card" id="triggerHomework">
+                        <div class="trigger-icon homework-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                        </div>
+                        <h3>Homework Follow-up</h3>
+                        <p>Message students with overdue incomplete assignments.</p>
+                        <span class="trigger-frequency">Runs daily</span>
+                        <button class="btn btn-primary" onclick="triggerTask('homework')">Send Now</button>
+                    </div>
+                    <div class="trigger-card" id="triggerReminders">
+                        <div class="trigger-icon reminders-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        </div>
+                        <h3>Upcoming Reminders</h3>
+                        <p>Remind students about sessions and deadlines scheduled tomorrow.</p>
+                        <span class="trigger-frequency">Runs daily</span>
+                        <button class="btn btn-primary" onclick="triggerTask('reminders')">Send Now</button>
+                    </div>
+                    <div class="trigger-card" id="triggerFeedback">
+                        <div class="trigger-icon feedback-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h3>Weekly Feedback</h3>
+                        <p>Collect course satisfaction feedback from all registered students.</p>
+                        <span class="trigger-frequency">Runs weekly</span>
+                        <button class="btn btn-primary" onclick="triggerTask('feedback')">Send Now</button>
+                    </div>
+                </div>
+
+                <div class="trigger-all-row">
+                    <button class="btn btn-accent btn-lg" onclick="triggerTask('all')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        Trigger All Tasks
+                    </button>
+                </div>
+
+                <!-- Trigger results log -->
+                <div class="table-card" id="triggerResultsCard" style="display:none;">
+                    <h3 style="margin-bottom:12px;">Outreach Results</h3>
+                    <table>
+                        <thead><tr><th>Student</th><th>Scenario</th><th>Sent</th></tr></thead>
+                        <tbody id="triggerResultsBody"></tbody>
+                    </table>
+                </div>
+
+                <!-- Interaction logs -->
+                <div class="table-card" style="margin-top:24px;">
+                    <h3 style="margin-bottom:12px;">Recent Interaction Logs</h3>
+                    <table>
+                        <thead><tr><th>Timestamp</th><th>Student</th><th>Scenario</th><th>Status</th><th>Summary</th></tr></thead>
+                        <tbody id="logsBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ═══════════ UPCOMING TAB ═══════════ -->
+            <section class="tab-panel" id="panel-upcoming">
+                <div class="panel-header">
+                    <h2>Upcoming Sessions & Activities</h2>
+                </div>
+
+                <div class="stats-row" id="upcomingStats"></div>
+
+                <div class="upcoming-timeline" id="upcomingTimeline"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ═══════════ MODALS ═══════════ -->
+
+    <!-- Mark Attendance Modal -->
+    <div class="modal-overlay" id="attendanceModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Mark Attendance</h3>
+                <button class="modal-close" onclick="closeModal('attendanceModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label>Session</label>
+                <select id="modalAttSession" class="select-input"></select>
+                <label>Student</label>
+                <select id="modalAttStudent" class="select-input"></select>
+                <label>Status</label>
+                <select id="modalAttStatus" class="select-input">
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('attendanceModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="submitMarkAttendance()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mark Homework Modal -->
+    <div class="modal-overlay" id="homeworkModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Update Homework Status</h3>
+                <button class="modal-close" onclick="closeModal('homeworkModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label>Assignment</label>
+                <select id="modalHwAssign" class="select-input"></select>
+                <label>Student</label>
+                <select id="modalHwStudent" class="select-input"></select>
+                <label>Status</label>
+                <select id="modalHwStatus" class="select-input">
+                    <option value="Complete">Complete</option>
+                    <option value="Incomplete">Incomplete</option>
+                    <option value="Pending">Pending</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('homeworkModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="submitMarkHomework()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

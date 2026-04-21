@@ -1,0 +1,21 @@
+student_id,name,course_id,telegram_handle,registered_chat_id,status,teacher_notes
+STU001,Alice,CS101,,1189055510,active,
+STU002,Bob,CS201,,6842498421,active,
+STU003,Charlie,CS301,,,at_risk,Frequently absent. Needs academic counseling.
+STU004,Diana,CS401,,,active,
+STU005,Eve,CS101,,,active,
+STU006,Frank,CS201,,,active,
+STU007,Grace,CS301,,,active,Excellent engagement in class.
+STU008,Heidi,CS401,,,active,
+STU009,Ivan,CS101,,,active,
+STU010,Judy,CS201,,,active,
+STU011,Mallory,CS301,,,at_risk,Struggling with assignments. Offer extra support.
+STU012,Nina,CS401,,,active,
+STU013,Oscar,CS101,,,active,
+STU014,Peggy,CS201,,,active,
+STU015,Romeo,CS301,,,active,
+STU016,Sybil,CS401,,,active,
+STU017,Trent,CS101,,,active,
+STU018,Victor,CS201,,,active,
+STU019,Walter,CS301,,,active,
+STU020,Zoe,CS401,,,active,
